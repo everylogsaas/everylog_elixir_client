@@ -31,9 +31,9 @@ defmodule ModuleName do   # Make sure to replace 'ModuleName' by the name of you
   # and then you can call other functions on it, such as set_variable and notify.
   # Make sure to start the GenServer process once and use its reference throughout your codebase,
   # rather than starting it multiple times.
-  $start_link()
+  start_link()
 
-  $setup(%{"api_key" => "your_api_key", "projectId" => "you_project_id"});
+  setup(%{"api_key" => "your_api_key", "projectId" => "you_project_id"});
 
   # Notifying the logs whenever you choose to.
 
@@ -53,7 +53,7 @@ defmodule ModuleName do   # Make sure to replace 'ModuleName' by the name of you
   # @option notify_options [Array]   :groups
 
   # Use the notify() method to send a log message(N.B: the provided elements of the log message are samples)
-  $notify(
+  notify(
     %{
       "title" => "^^^^^^^^Test Title",
       "summary" => "Test Summary********",
