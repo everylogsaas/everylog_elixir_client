@@ -27,7 +27,11 @@ This is to be set once globally (instantiated) from within the project, and used
 defmodule ModuleName do   # Make sure to replace 'ModuleName' by the name of your module
   import EverylogElixirClient
 
-  $start_link()  - By calling start_link(), you start the EverylogElixirClient GenServer process, and then you can call other functions on it, such as set_variable and notify. Make sure to start the GenServer process once and use its reference throughout your codebase, rather than starting it multiple times.
+  # By calling start_link(), you start the EverylogElixirClient GenServer process, 
+  # and then you can call other functions on it, such as set_variable and notify.
+  # Make sure to start the GenServer process once and use its reference throughout your codebase,
+  # rather than starting it multiple times.
+  $start_link()
 
   $setup(%{"api_key" => "your_api_key", "projectId" => "you_project_id"});
 
@@ -48,7 +52,7 @@ defmodule ModuleName do   # Make sure to replace 'ModuleName' by the name of you
 # @option notify_options [Dictionary] :properties
 # @option notify_options [Array]   :groups
 
-// Use the notify() method to send a log message(N.B: the provided elements of the log message are samples)
+# Use the notify() method to send a log message(N.B: the provided elements of the log message are samples)
 $notify(
   %{
     "title" => "^^^^^^^^Test Title",
