@@ -35,33 +35,33 @@ defmodule ModuleName do   # Make sure to replace 'ModuleName' by the name of you
 
   $setup(%{"api_key" => "your_api_key", "projectId" => "you_project_id"});
 
-# Notifying the logs whenever you choose to.
+  # Notifying the logs whenever you choose to.
 
-### Uses the instantiated object from the class and notify by setting different options.
+  ### Uses the instantiated object from the class and notify by setting different options.
 
-# @param [Dictionary] notify_options
-# @option notify_options [String, options[:projectId]]  :projectId name of the project
-# @option notify_options [String]  :title to display in the application and if enabled in the notification
-# @option notify_options [String]  :summary is a not so long text to display on the application and if enabled in the notification
-# @option notify_options [String]  :body it can contain a long text simple formatted, no html to display in the application
-# @option notify_options [Array]   :tags it can be used to categorize the notification, must be strings
-# @option notify_options [String]  :link it can be used to display on the application and if enabled in the notification
-# @option notify_options [Boolean] :push if True, a push notification is sent to application
-# @option notify_options [String]  :icon
-# @option notify_options [Array]   :externaChannels
-# @option notify_options [Dictionary] :properties
-# @option notify_options [Array]   :groups
+  # @param [Dictionary] notify_options
+  # @option notify_options [String, options[:projectId]]  :projectId name of the project
+  # @option notify_options [String]  :title to display in the application and if enabled in the notification
+  # @option notify_options [String]  :summary is a not so long text to display on the application and if enabled in the notification
+  # @option notify_options [String]  :body it can contain a long text simple formatted, no html to display in the application
+  # @option notify_options [Array]   :tags it can be used to categorize the notification, must be strings
+  # @option notify_options [String]  :link it can be used to display on the application and if enabled in the notification
+  # @option notify_options [Boolean] :push if True, a push notification is sent to application
+  # @option notify_options [String]  :icon
+  # @option notify_options [Array]   :externaChannels
+  # @option notify_options [Dictionary] :properties
+  # @option notify_options [Array]   :groups
 
-# Use the notify() method to send a log message(N.B: the provided elements of the log message are samples)
-$notify(
-  %{
-    "title" => "^^^^^^^^Test Title",
-    "summary" => "Test Summary********",
-    "body" => "Test Body------",
-    "properties" => ["a"=> 123]
-}
-);
-
+  # Use the notify() method to send a log message(N.B: the provided elements of the log message are samples)
+  $notify(
+    %{
+      "title" => "^^^^^^^^Test Title",
+      "summary" => "Test Summary********",
+      "body" => "Test Body------",
+      "properties" => ["a"=> 123]
+  }
+  );
+end
 ```
 
 ## License
