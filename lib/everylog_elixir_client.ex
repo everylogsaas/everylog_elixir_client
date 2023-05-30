@@ -32,7 +32,7 @@ defmodule EverylogElixirClient do
   end
 
   def set_variable(value) do
-    Agent.update(__MODULE__, fn state -> Map.merge(@setup_defaults, value) end)
+    Agent.update(__MODULE__, fn _state -> Map.merge(@setup_defaults, value) end)
   end
 
   def setup(noptions) do
@@ -59,7 +59,7 @@ defmodule EverylogElixirClient do
         {:ok, %{status_code: 401, body: error_body}} ->
           {:error, "Unauthorized: #{error_body}"}
 
-        {:ok, %{status_code: status_code, body: error_body}} ->
+        {:ok, %{ body: error_body}} ->
           {:error, "Request failed #{error_body}"}
       end
     else
