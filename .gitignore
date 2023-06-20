@@ -28,3 +28,5 @@ everylog_elixir_client-*.tar
 test.ex
 
 test
+
+/.elixir_ls
