@@ -7,7 +7,7 @@ defmodule EverylogElixirClient do
   @setup_defaults %{
     api_key: "",
     projectId: "",
-    everylog_url: "https://api.everylog.io/api/v1/log-entries"
+    deverylog_url: "https://api.everylog.devdemo.it/api/v1/log-entries"
   }
 
   @notify_defaults %{
@@ -19,7 +19,7 @@ defmodule EverylogElixirClient do
     push: false,
     icon: "",
     externalChannels: [],
-    properties: %{},
+    properties: [%{}],
     groups: []
   }
 
@@ -39,22 +39,30 @@ defmodule EverylogElixirClient do
     set_variable(noptions)
   end
 
-  def notify(notoptions) do
+  def create_log_entry(notoptions) do
     options = get_variable()
 
     if options[:api_key] != "" and options[:projectId] != "" do
       notify_options = Map.merge(@notify_defaults, notoptions)
       merged_options = Map.put(notify_options, :projectId, options[:projectId])
+
+      # Ensure that properties is a list of maps
+      properties = merged_options[:properties]
+      unless is_list(properties) and Enum.all?(properties, &is_map/1) do
+        raise ArgumentError, "The 'properties' field must be a list of maps."
+      end
+
       headers = [
         {"Authorization", "Bearer #{options[:api_key]}"},
         {"Content-Type", "application/json"}
       ]
+
       body = encode!(merged_options)
 
       case post(options[:everylog_url], body, headers) do
-        {:ok, %{status_code: 200, body: raw_body }} ->
-          parsed_body = decode!(raw_body)
-          {:ok, parsed_body}
+        {:ok, %{status_code: 200 }} ->
+          # parsed_body = decode!(raw_body)
+          {:ok, "Successfully created log entry"}
 
         {:ok, %{status_code: 401, body: error_body}} ->
           {:error, "Unauthorized: #{error_body}"}
